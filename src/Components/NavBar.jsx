@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 const NavBar = () => {
@@ -8,24 +8,22 @@ const NavBar = () => {
     setValue(e.target.value);
     
   };
+  const suggestions=["phone","laptop","headphone","earphone","watch","clothes","shoes","bag","books"];
 
   const handle = () => {
     navigate('/cart');
   };
-  const handlesearch = () => {
-    if(value==''){
-      alert('Please enter a value to search');
-      return;
-    }
-    else if(value=='dress'){
-     navigate('/Dresses');}
-     else if(value=='grocery'){
-      navigate('/Grocery');
-    }
-    else{
-      alert('No such product found');
-    }
+  const handlesearch = (e) => {
+ 
+   if(value){
+    navigate(`/search?query=${encodeURIComponent(value)}`);
+   }
   }
+  let filteredSuggestions = useMemo(() => {
+    if(!value.trim()){
+      const data=suggestions?.filter((item) => item?.toLowerCase().includes(value.toLowerCase()));
+      return data;
+    }},[value]);
 
 
   return (

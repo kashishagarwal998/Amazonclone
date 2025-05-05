@@ -1,105 +1,19 @@
 import React from 'react'
 
-const Dresses = () => {
+const Dresses = (searchdata) => {
+  const {title, thumbnail, price} = searchdata.data;
   return (
-    <div className='p-[20px] grid grid-cols-4 gap-4'>
-    <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-      <h1 className='font-bold text-2xl'>ITEM </h1>
+    <div className='p-[40px]'>
+      
+    <div className='bg-black text-white p-[10px] w-[400px] h-[400px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
+      <h1 className='font-bold text-2xl'>{title}</h1>
       <div className='w-[250px] h-[250px]'>
-      <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
+      <img src={thumbnail} alt="not found"className='object-cover h-full w-full rounded-lg '/>
   
       </div>
-      <h2 className='font-bold '>30,000/-</h2>
-      </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         <div className='bg-white w-[300px] h-[300px] border-2 border-black rounded-lg shadow-lg flex flex-col items-center justify-center'>
-         <h1 className='font-bold text-2xl'>ITEM </h1>
-         <div className='w-[250px] h-[250px]'>
-         <img src="Images/img5.png" alt="not found"className='object-cover h-full w-full rounded-lg '/>
-     
-         </div>
-         <h2 className='font-bold '>30,000/-</h2>
-         </div>
-         </div>
+      <h2 className='font-bold '>{price}/-</h2>
+    </div>
+    </div>
   )
 }
 
