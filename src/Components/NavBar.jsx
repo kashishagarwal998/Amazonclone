@@ -18,6 +18,7 @@ const NavBar = () => {
    if(value){
     navigate(`/search?query=${encodeURIComponent(value)}`);
    }
+   setValue('');
   }
   let filteredSuggestions = useMemo(() => {
     if(!value.trim()){
