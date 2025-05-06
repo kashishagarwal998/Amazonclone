@@ -9,24 +9,20 @@ const Cart = () => {
    
 
   return (
-<div>
-    <div className='p-4 flex gap-[500px]'> 
-        <h1 className='ml-[600px] font-bold text-4xl'>CART ITEMS</h1>
-    <button className='text-center font-bold text-2xl border border-black p-2 rounded-lg text-white bg-black' onClick={handleback}>BACK</button></div>
-<div className='p-[20px] grid grid-cols-4 gap-4'>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    <CartItems/>
-    </div>
-</div>
-  )
+       <div className='h-auto w-[1489px] border-2 border-gray-600 m-4'>
+        <h1 className='text-3xl font-bold pl-4 pt-2'>Shopping Cart</h1>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+        <CartItems/>
+       </div>
+      )
 }
 
 export default Cart

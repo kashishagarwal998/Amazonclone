@@ -1,57 +1,66 @@
+
 import React, { useMemo } from 'react';
-import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
+
 const NavBar = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState('');
+
   const handlevalue = (e) => {
     setValue(e.target.value);
-    
   };
-  const suggestions=["phone","laptop","headphone","earphone","watch","clothes","shoes","bag","books"];
+
+  const suggestions = ["phone", "laptop", "headphone", "earphone", "watch", "clothes", "shoes", "bag", "books"];
 
   const handle = () => {
     navigate('/cart');
   };
-  const handlesearch = (e) => {
- 
-   if(value){
-    navigate(`/search?query=${encodeURIComponent(value)}`);
-   }
-   setValue('');
+  const handlekeydown = (e) => {
+    if (e.key === 'Enter') {
+      handlesearch();
+    }
   }
-  let filteredSuggestions = useMemo(() => {
-    if(!value.trim()){
-      const data=suggestions?.filter((item) => item?.toLowerCase().includes(value.toLowerCase()));
-      return data;
-    }},[value]);
 
+  const handlesearch = () => {
+    if (value) {
+      navigate(`/search?query=${encodeURIComponent(value)}`);
+      setValue('');
+    }
+   
+    
+  };
+  const handlenavigate = (text) => {
+    navigate(`/search?query=${encodeURIComponent(text)}`);
+    setValue('');
+    filteredSuggestions=[];
+  }
+
+  let filteredSuggestions = useMemo(() => {
+    if (value.trim()) {
+      return suggestions.filter((item) =>
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+    }
+    return [];
+  }, [value]);
 
   return (
-    <div className='bg-black w-full'>
-      <div className="container">
-        <div className="box1">
-          <img src="Images\img1.jpg" alt="..." />
+    <div className="bg-black w-full">
+      <div className="w-full h-[90px] bg-black flex gap-4 p-2">
+        <div className="w-[120px] h-[80px] hover:border-2 hover:border-white">
+          <img src="Images/img1.jpg" alt="logo" className="w-full h-full" />
         </div>
 
-        <div className="box2">
-          <div className="child1">
+        <div className="w-[120px] h-[80px] flex p-1 hover:border-2 hover:border-white">
+          <div className="w-[30px] h-[80px] text-white text-2xl flex items-center justify-center">
             <i className="fa-solid fa-location-dot"></i>
           </div>
-          <div className="child2">UPDATE LOCATION</div>
+          <div className="w-[90px] h-[80px] text-white text-sm pt-5">UPDATE LOCATION</div>
         </div>
 
-        <div className="box3">
-          <div className="i1">
-            <select
-              style={{
-                marginTop: '15px',
-                marginLeft: '10px',
-                backgroundColor: 'grey',
-                width: '50px',
-                border: 'none'
-              }}
-            >
+        <div className="flex-grow h-[50px] pt-4 flex relative">
+          <div className="w-[70px] h-[50px] bg-gray-500  ml-[10px]">
+            <select className="w-full h-full border-none bg-gray-500 text-white text-sm">
               <option>ALL</option>
               <option>Electronics</option>
               <option>Mobiles</option>
@@ -60,57 +69,59 @@ const NavBar = () => {
               <option>Amazon Fashion</option>
             </select>
           </div>
-          <div className="i2"><input type="text" placeholder='Search Amazon.in' value={value} onChange={handlevalue}/></div>
-          <div className="i3" onClick={handlesearch}>
-            <i className="fa-solid fa-magnifying-glass "></i>
+          <div className="w-[400px] h-[50px] bg-white text-gray-600 text-lg px-2 flex items-center">
+            <input
+              type="text"
+              placeholder="Search Amazon.in"
+              value={value}
+              onChange={handlevalue}
+              onKeyDown={handlekeydown}
+              className="w-full h-full outline-none"
+            />
           </div>
+          <div className="w-[70px] h-[50px] bg-orange-500 text-2xl flex items-center justify-center cursor-pointer" onClick={handlesearch}>
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </div>
+          {filteredSuggestions.length > 0 &&  value.trim() &&
+            <div className="absolute top-full left-0 mt-5 ml-2 w-[542px] max-h-40 overflow-y-auto bg-white text-black z-10">
+            {filteredSuggestions.map((text,i)=>{
+              return <p onClick={()=>handlenavigate(text)} key={i}>{text}</p>
+            })}
+                </div>
+              }
+    
+          
         </div>
 
-        <div className="box4">
-          <div className="image">
-            <img src="Images/img3.jpg" alt="...." />
-          </div>
-          <div className="child3">EN</div>
+        <div className="w-[120px] h-[80px] hover:border-2 hover:border-white">
+          <img src="Images/img3.jpg" alt="language" className="w-[70px] h-[70px]" />
+          <div className="text-white text-lg pt-[22px]">EN</div>
         </div>
 
-        <div className="box5 mt-[10px]">
+        <div className="w-[120px] h-[80px] text-white hover:border-2 hover:border-white mt-[10px]">
           <div>Hello, Sign in</div>
-          <b style={{ marginLeft: '5px', marginTop: '9px' }}>Account & List</b>
+          <b className="ml-[5px] mt-[9px] block">Account & List</b>
         </div>
 
-        <div className="box6 mt-[10px] ml-[5px] px-[19px]">
+        <div className="w-[120px] h-[80px] text-white hover:border-2 hover:border-white mt-[10px] ml-[5px] px-[19px]">
           <div>Returns</div>
           <b>& Orders</b>
         </div>
 
-        <div className="box7" onClick={handle}>
-          <div className="one">
+        <div className="w-[120px] h-[80px] flex hover:border-2 hover:border-white cursor-pointer" onClick={handle}>
+          <div className="w-[30px] h-[80px] text-white text-2xl flex items-center justify-center">
             <i className="fa-solid fa-cart-shopping"></i>
           </div>
-          <div className="two">CART</div>
+          <div className="w-[90px] h-[80px] text-white text-sm pt-5 ml-5">CART</div>
         </div>
       </div>
 
-      <div className="c2">
-        <ul id="list">
-          <li><i className="fa-solid fa-list"></i></li>
-          <li>ALL</li>
-          <li>Fresh</li>
-          <li>MX Player</li>
-          <li>Sell</li>
-          <li>Today's Deals</li>
-          <li>Best Sellers</li>
-          <li>Mobiles</li>
-          <li>Customer Service</li>
-          <li>Electronics</li>
-          <li>Prime</li>
-          <li>New Releases</li>
-          <li>Amazon pay</li>
-          <li>Home & Kitchen</li>
-          <li>Fashion</li>
-          <li>Computer</li>
-          <li>Books</li>
-          <li>Car & Motorbikes</li>
+      <div className="w-full h-[50px] bg-[#262626] flex text-white justify-between">
+        <ul className="flex gap-1 p-2">
+          <li className="px-2 py-1 hover:border-2 hover:border-white list-none"><i className="fa-solid fa-list"></i></li>
+          {["ALL", "Fresh", "MX Player", "Sell", "Today's Deals", "Best Sellers", "Mobiles", "Customer Service", "Electronics", "Prime", "New Releases", "Amazon pay", "Home & Kitchen", "Fashion", "Computer", "Books", "Car & Motorbikes"].map((item, index) => (
+            <li key={index} className="px-2 py-1 hover:border-2 hover:border-white list-none text-sm">{item}</li>
+          ))}
         </ul>
       </div>
     </div>
@@ -118,3 +129,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

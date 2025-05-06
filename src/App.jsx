@@ -20,7 +20,11 @@ function App() {
             </>
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<>
+              <NavBar />
+              <Crousel />
+              <Cart />
+            </>} />
          <Route path='/search' element={<><NavBar/>
          <Crousel/>
          <SearchPage/></>} />
