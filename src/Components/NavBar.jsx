@@ -1,8 +1,10 @@
 
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../App';
 
 const NavBar = () => {
+  const { user } = useContext(AppContext);
   const navigate = useNavigate();
   const [value, setValue] = React.useState('');
 
@@ -47,7 +49,7 @@ const NavBar = () => {
   return (
     <div className="bg-black w-full">
       <div className="w-full h-[90px] bg-black flex gap-4 p-2">
-        <div className="w-[120px] h-[80px] hover:border-2 hover:border-white">
+        <div className="w-[120px] h-[80px] p-2 hover:border-2 hover:border-white">
           <img src="Images/img1.jpg" alt="logo" className="w-full h-full" />
         </div>
 
@@ -60,7 +62,7 @@ const NavBar = () => {
 
         <div className="flex-grow h-[50px] pt-4 flex relative">
           <div className="w-[70px] h-[50px] bg-gray-500  ml-[10px]">
-            <select className="w-full h-full border-none bg-gray-500 text-white text-sm">
+            <select className="w-full h-full border-none bg-gray-500 text-black p-3 text-sm">
               <option>ALL</option>
               <option>Electronics</option>
               <option>Mobiles</option>
@@ -92,8 +94,11 @@ const NavBar = () => {
     
           
         </div>
+        <div className='w-[100px] h-[80px] flex items-center justify-center hover:border-2 hover:border-white'>
+          <p className='text-white font-bold text-1xl p-6 '>{user ? `Hello, ${user.username}`:"hello,user"}</p>
+        </div>
 
-        <div className="w-[120px] h-[80px] hover:border-2 hover:border-white">
+        <div className="w-[120px] h-[80px] hover:border-2 hover:border-white flex">
           <img src="Images/img3.jpg" alt="language" className="w-[70px] h-[70px]" />
           <div className="text-white text-lg pt-[22px]">EN</div>
         </div>
@@ -112,14 +117,14 @@ const NavBar = () => {
           <div className="w-[30px] h-[80px] text-white text-2xl flex items-center justify-center">
             <i className="fa-solid fa-cart-shopping"></i>
           </div>
-          <div className="w-[90px] h-[80px] text-white text-sm pt-5 ml-5">CART</div>
+          <div className="w-[90px] h-[80px] text-white text-sm pt-5 ml-3 mt-2">CART</div>
         </div>
       </div>
 
       <div className="w-full h-[50px] bg-[#262626] flex text-white justify-between">
         <ul className="flex gap-1 p-2">
-          <li className="px-2 py-1 hover:border-2 hover:border-white list-none"><i className="fa-solid fa-list"></i></li>
-          {["ALL", "Fresh", "MX Player", "Sell", "Today's Deals", "Best Sellers", "Mobiles", "Customer Service", "Electronics", "Prime", "New Releases", "Amazon pay", "Home & Kitchen", "Fashion", "Computer", "Books", "Car & Motorbikes"].map((item, index) => (
+          <li className="px-2  hover:border-2 hover:border-white list-none" onClick={()=>navigate("/")}><i class="fa-solid fa-house"></i></li>
+          {[  "ALL",  "MX Player", "Sell", "Today's Deals", "Best Sellers", "Mobiles", "Customer Service", "Electronics", "Prime", "New Releases", "Amazon pay", "Home & Kitchen", "Fashion", "Computer", "Books", "Car & Motorbikes"].map((item, index) => (
             <li key={index} className="px-2 py-1 hover:border-2 hover:border-white list-none text-sm">{item}</li>
           ))}
         </ul>

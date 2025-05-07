@@ -83,15 +83,15 @@ const CardSection = () => {
   return (
   
 
-    <div className='p-[20px] grid grid-cols-4 gap-2 h-auto'>
-      {items.map((item, index) => {
-        return (
-          <div key={index} className='flex justify-center'>
-            <Items data={item} />
-          </div>
-        )
-      })}
+    
+    <div className="px-8 py-10 bg-gray-50 min-h-screen">
+    <h1 className="text-3xl font-semibold mb-8 text-center text-gray-800">Featured Products</h1>
+    <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {items.map((item, index) => (
+        <Items key={index} data={item} />
+      ))}
     </div>
+  </div>
   )
 }
 

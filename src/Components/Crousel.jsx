@@ -4,12 +4,12 @@ const Crousel = () => {
   return (
     <div  className='h-64 border border-black/10 '>
         
-        <Carousel   className="">
+        <Carousel   className="overflow-hidden">
      
       <img
         src='Images/c2.png'
         alt="image 2"
-        className=" w-full object-cover"
+        className=" w-full object-cover "
       />
       
       <img

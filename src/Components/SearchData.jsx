@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SearchData = ({data}) => {
-    const { title, thumbnail, price } = data;
+    const { title, thumbnail, price,rating } = data;
   return (
     
       <div className='p-[30px]'>
@@ -11,7 +11,8 @@ const SearchData = ({data}) => {
       <img src={thumbnail} alt="not found"className='object-cover h-full w-full rounded-lg overflow-hidden border-8 border-black/[2px] '/>
   
       </div>
-      <h2 className='font-bold mt-2'>{price}</h2>
+      <h2 className='font-bold mt-2'>price..{price}</h2>
+      <h2 className='font-bold mt-2'>rating..{rating}</h2>
       </div>
       </div>
   )
