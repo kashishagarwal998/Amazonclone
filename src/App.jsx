@@ -27,7 +27,7 @@ function App() {
             </>} />
          <Route path='/search' element={<><NavBar/>
          <Crousel/>
-         <SearchPage/></>} />
+         <SearchPage/></ >} />
 
         <Route path="*" element={<h1 className="text-3xl text-center">404 Not Found</h1>} />
       </Routes>

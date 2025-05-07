@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Items from './Items'
 const CardSection = () => {
+ 
   const items = [
     {
       title: "Item 1",
@@ -76,16 +77,13 @@ const CardSection = () => {
       title: "Item 15",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9TCHuLuNG3PXUvKaTMH2kZCt1KpMPXyqhW1o55USStA&s&ec=72940543",
       price: "₹1,100"
-    },
-    {
-      title: "Item 16",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Kh0JAComXQo5_2bKlqBgEQBPTYrXDY3OAkHhc_TdFA&s&ec=72940543",
-      price: "₹900"
     }
   ];
   
   return (
-    <div className='p-[20px] grid grid-cols-4 gap-4'>
+  
+
+    <div className='p-[20px] grid grid-cols-4 gap-2 h-auto'>
       {items.map((item, index) => {
         return (
           <div key={index} className='flex justify-center'>
