@@ -11,12 +11,14 @@ const SearchPage = () => {
   const [maxPrice, setMaxPrice] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [rating, setRating] = useState("");
+  const [sort, setSort] = useState("relevance");
   const getsearchdata = async () => {
     setLoading(true);
     try {
       const response = await fetch(`https://dummyjson.com/products/search?q=${query}`);
       const data = await response.json();
       setSearchdata(data.products);
+      console.log(data.products);
     } catch (error) {
       console.error('Error fetching search results:', error);
     } finally {
@@ -35,8 +37,15 @@ const SearchPage = () => {
     if (rating) {
       results = results.filter((item) => item.rating >= rating);
     }
+    if (sort === "price-low") {
+      results.sort((a, b) => a.price - b.price);
+    } else if (sort === "price-high") {
+      results.sort((a, b) => b.price - a.price);
+    } else if (sort === "relevance") {
+      results.sort((a, b) => a.id - b.id);
+    }
     return results;
-  }, [searchdata, maxPrice, minPrice, rating]);
+  }, [searchdata, maxPrice, minPrice, rating, sort]);
 
   useEffect(() => {
     getsearchdata();
@@ -44,7 +53,7 @@ const SearchPage = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 px-4 py-10">
-      
+
       <div className="w-full lg:w-1/4 border-4 border-gray-300 rounded-lg p-5 space-y-6 mt-24">
         <div>
           <label className="block text-lg font-semibold mb-1">Max Price</label>
@@ -68,15 +77,24 @@ const SearchPage = () => {
         </div>
         <div>
           <h1 className='block text-lg font-semibold mb-1'>Rating</h1>
-          1.  <input type="radio" name='rate' value={rating} onChange={(e)=>{setRating("1")}} />⭐<br />
-          2.  <input type="radio" name='rate' value={rating} onChange={(e)=>{setRating("2")}}/>⭐⭐<br />
-          3.  <input type="radio" name='rate' value={rating} onChange={(e)=>{setRating("3")}}/>⭐⭐⭐ <br />
-          4.  <input type="radio" name='rate' value={rating} onChange={(e)=>{setRating("4")}}/>⭐⭐⭐⭐<br />
-         
+          1.  <input type="radio" name='rate' value={rating} onChange={(e) => { setRating("1") }} />⭐<br />
+          2.  <input type="radio" name='rate' value={rating} onChange={(e) => { setRating("2") }} />⭐⭐<br />
+          3.  <input type="radio" name='rate' value={rating} onChange={(e) => { setRating("3") }} />⭐⭐⭐ <br />
+          4.  <input type="radio" name='rate' value={rating} onChange={(e) => { setRating("4") }} />⭐⭐⭐⭐<br />
+
+        </div>
+        <div>
+          <h1 className='block text-lg font-semibold mb-1'>Sort By</h1>
+          <select className='border border-gray-400 rounded px-3 py-1' onChange={(e) => setSort(e.target.value)} value={sort}>
+            <option value="relevance">Relevance</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+           
+          </select>
         </div>
       </div>
 
-      {/* Results Section */}
+ 
       <div className="flex-1">
         {loading ? (
           <div className="flex justify-center items-center h-40">

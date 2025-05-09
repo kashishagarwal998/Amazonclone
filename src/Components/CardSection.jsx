@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Items from './Items'
 const CardSection = () => {
- 
+
   const items = [
     {
       title: "Item 1",
@@ -79,19 +79,19 @@ const CardSection = () => {
       price: "₹1,100"
     }
   ];
-  
-  return (
-  
 
-    
+  return (
+
+
+
     <div className="px-8 py-10 bg-gray-50 min-h-screen">
-    <h1 className="text-3xl font-semibold mb-8 text-center text-gray-800">Featured Products</h1>
-    <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {items.map((item, index) => (
-        <Items key={index} data={item} />
-      ))}
+      <h1 className="text-3xl font-semibold mb-8 text-center text-gray-800">Featured Products</h1>
+      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {items.map((item, index) => (
+          <Items key={index} data={item} />
+        ))}
+      </div>
     </div>
-  </div>
   )
 }
 

@@ -13,14 +13,15 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setUser({name: "Kashish", 
+    setUser({
+      name: "Kashish",
       username: "Kashish",
       id: "12345",
     })
   }, []);
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{user,setUser}}>
+      <AppContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route
             path="/"
@@ -37,7 +38,7 @@ function App() {
             element={
               <>
                 <NavBar />
-                <Crousel />
+
                 <Cart />
               </>
             }

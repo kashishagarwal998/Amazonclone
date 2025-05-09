@@ -28,13 +28,13 @@ const NavBar = () => {
       navigate(`/search?query=${encodeURIComponent(value)}`);
       setValue('');
     }
-   
-    
+
+
   };
   const handlenavigate = (text) => {
     navigate(`/search?query=${encodeURIComponent(text)}`);
     setValue('');
-    filteredSuggestions=[];
+    filteredSuggestions = [];
   }
 
   let filteredSuggestions = useMemo(() => {
@@ -84,18 +84,18 @@ const NavBar = () => {
           <div className="w-[70px] h-[50px] bg-orange-500 text-2xl flex items-center justify-center cursor-pointer" onClick={handlesearch}>
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
-          {filteredSuggestions.length > 0 &&  value.trim() &&
+          {filteredSuggestions.length > 0 && value.trim() &&
             <div className="absolute top-full left-0 mt-5 ml-2 w-[542px] max-h-40 overflow-y-auto bg-white text-black z-10">
-            {filteredSuggestions.map((text,i)=>{
-              return <p onClick={()=>handlenavigate(text)} key={i}>{text}</p>
-            })}
-                </div>
-              }
-    
-          
+              {filteredSuggestions.map((text, i) => {
+                return <p onClick={() => handlenavigate(text)} key={i}>{text}</p>
+              })}
+            </div>
+          }
+
+
         </div>
         <div className='w-[100px] h-[80px] flex items-center justify-center hover:border-2 hover:border-white'>
-          <p className='text-white font-bold text-1xl p-6 '>{user ? `Hello, ${user.username}`:"hello,user"}</p>
+          <p className='text-white font-bold text-1xl p-6 '>{user ? `Hello, ${user.username}` : "hello,user"}</p>
         </div>
 
         <div className="w-[120px] h-[80px] hover:border-2 hover:border-white flex">
@@ -123,8 +123,8 @@ const NavBar = () => {
 
       <div className="w-full h-[50px] bg-[#262626] flex text-white justify-between">
         <ul className="flex gap-1 p-2">
-          <li className="px-2  hover:border-2 hover:border-white list-none" onClick={()=>navigate("/")}><i class="fa-solid fa-house"></i></li>
-          {[  "ALL",  "MX Player", "Sell", "Today's Deals", "Best Sellers", "Mobiles", "Customer Service", "Electronics", "Prime", "New Releases", "Amazon pay", "Home & Kitchen", "Fashion", "Computer", "Books", "Car & Motorbikes"].map((item, index) => (
+          <li className="px-2  hover:border-2 hover:border-white list-none" onClick={() => navigate("/")}><i class="fa-solid fa-house"></i></li>
+          {["ALL", "MX Player", "Sell", "Today's Deals", "Best Sellers", "Mobiles", "Customer Service", "Electronics", "Prime", "New Releases", "Amazon pay", "Home & Kitchen", "Fashion", "Computer", "Books", "Car & Motorbikes"].map((item, index) => (
             <li key={index} className="px-2 py-1 hover:border-2 hover:border-white list-none text-sm">{item}</li>
           ))}
         </ul>

@@ -16,9 +16,11 @@ const Items = ({ data }) => {
     if(prevItems){
       const newArray=[...prevItems,cartItems]
       localStorage.setItem('cart',JSON.stringify(newArray));
+      alert("Item added to cart successfully!");
     }
     else{
       localStorage.setItem('cart',JSON.stringify([cartItems]));
+      alert("Item added to cart successfully!");
 
     }
   }
