@@ -54,7 +54,7 @@ const SearchPage = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-6 px-4 py-10">
 
-      <div className="w-full lg:w-1/4 border-4 border-gray-300 rounded-lg p-5 space-y-6 mt-24">
+      <div className="w-full lg:w-1/4 border-4 border-gray-300 rounded-lg p-5 space-y-6 mt-20">
         <div>
           <label className="block text-lg font-semibold mb-1">Max Price</label>
           <input
@@ -89,12 +89,12 @@ const SearchPage = () => {
             <option value="relevance">Relevance</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
-           
+
           </select>
         </div>
       </div>
 
- 
+
       <div className="flex-1">
         {loading ? (
           <div className="flex justify-center items-center h-40">
@@ -105,7 +105,7 @@ const SearchPage = () => {
             <h1 className="text-2xl font-bold text-center mb-6">
               Results for <span className="text-orange-600">"{query}"</span>
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
               {filtereddata.length > 0 ? (
                 filtereddata.map((item) => <SearchData key={item.id} data={item} />)
               ) : (
