@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../App';
 
 const Items = ({ data }) => {
-  const { id, title, img, price } = data;
+  const { id, title, thumbnail, price } = data;
   const { user } = useContext(AppContext);
 
   const handleAddToCart = () => {
@@ -35,7 +35,7 @@ const Items = ({ data }) => {
     <div className="bg-white bg-opacity-80 backdrop-blur-md border border-gray-200 rounded-3xl shadow-2xl hover:shadow-amber-200 transition-all duration-300 hover:-translate-y-1 transform p-4 flex flex-col items-center justify-between space-y-4 max-w-[300px]">
       <div className="w-full h-48 overflow-hidden rounded-xl shadow-inner">
         <img
-          src={img}
+          src={ thumbnail}
           alt={title}
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
         />

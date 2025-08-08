@@ -68,7 +68,7 @@ const Cart = () => {
                         >
                             <div className="w-full h-48 overflow-hidden rounded-xl">
                                 <img
-                                    src={item.img}
+                                    src={item.thumbnail}
                                     alt={item.title}
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                                 />
